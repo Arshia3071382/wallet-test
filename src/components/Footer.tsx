@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function () {
+export default function Footer() {
   return (
    <div className='flex flex-col py-10 bg-blue-800 text-whit'>
      <div className='flex flex-row justify-around items-center gap-3  bg-blue-800 text-white py-7'>
