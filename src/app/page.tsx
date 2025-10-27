@@ -13,9 +13,15 @@ type Coin = {
 };
 
 export default async function CoinsPage() {
+
   const res = await fetch("https://b.wallet.ir/coinlist/list", { cache: "no-store" });
+
+  if (!res.ok) {
+    throw new Error("خطا در دریافت اطلاعات ارزها");
+  }
+
   const data = await res.json();
-  const coins: Coin[] = data.items;
+  const coins: Coin[] = data.items || [];
 
   return (
     <main dir="rtl" className="min-h-screen bg-gray-50 p-6">
@@ -65,7 +71,7 @@ export default async function CoinsPage() {
                 <td className="p-3 text-left">
                   <Link
                     href={`/coin/${coin.currency_code}`}
-                    className="bg-blue-600 text-white py-1.5 px-4 rounded-lg hover:bg-blue-700 text-sm"
+                    className="inline-block bg-blue-600 text-white py-1.5 px-4 rounded-lg hover:bg-blue-700 text-sm transition-colors"
                   >
                     مطالعه
                   </Link>
@@ -75,6 +81,7 @@ export default async function CoinsPage() {
           </tbody>
         </table>
       </div>
+
       <MainContent />
       <Footer />
     </main>
