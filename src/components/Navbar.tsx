@@ -10,9 +10,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white container mx-auto shadow-sm py-4 px-6 flex justify-between items-center flex-row-reverse ">
+    <nav className="bg-white container mx-auto shadow-sm py-4 px-6 flex justify-between items-center flex-row ">
    
-      <div className="flex items-center gap-6 flex-row-reverse"> 
+      <div className="flex items-center gap-6 flex-row"> 
         <div className="md:hidden">
           {isOpen ? (
             <X className="w-7 h-7 cursor-pointer" onClick={() => setIsOpen(false)} />
