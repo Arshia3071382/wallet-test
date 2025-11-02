@@ -3,8 +3,9 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="flex flex-col py-10 bg-blue-800 text-white">
-      <div className="flex flex-row justify-around items-center gap-3 bg-blue-800 text-white py-7">
+    <div className="flex flex-col py-10 bg-blue-800 text-white ">
+      <div className="flex flex-col justify-around items-center gap-3 bg-blue-800 text-white py-7
+      w-full md:flex-row">
         <div className="w-60">
           <Image
             src="/image/logo_dark.8e5c7ade 2.png"
@@ -13,7 +14,7 @@ export default function Footer() {
             height={80}
             className="object-contain"
           />
-          <p className="text-sm mt-4 leading-6">
+          <p className="text-sm mt-4 leading-6 ">
             راهکارهای پرداخت ری در سال 2009 فعالیت خود را در زمینه سیستم های
             پرداخت بین المللی با وبسایت wallet.ir آغاز کرد. ری پرداخت با نام
             تجاری MGY INVESTMENT LTD با شماره ثبت ۷۳۶۵۰۶۳ در کشور انگلستان به
@@ -21,7 +22,8 @@ export default function Footer() {
           </p>
         </div>
 
-        <div>
+       <div className="flex flex-row  justify-between gap-10 mt-10">
+         <div>
           <ul className="flex flex-col gap-3">
             <div className="pb-4 font-bold">
               <li>لینک های مرتبط</li>
@@ -70,7 +72,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="hidden md:inline">
           <ul className="flex flex-col gap-3">
             <li>خرید یواس دی کوین</li>
             <li>خرید چین لینک</li>
@@ -78,11 +80,12 @@ export default function Footer() {
             <li>خرید تتر</li>
           </ul>
         </div>
+       </div>
       </div>
 
       <div className="w-full h-px bg-gray-500"></div>
 
-      <div className="flex flex-row justify-around items-center py-10 text-white">
+      <div className="flex flex-col gap-3 sm:flex-row justify-around items-center py-10 text-white">
         <h3>تمامی حقوق این سرویس متعلق به مجموعه ری پیمنت است</h3>
         <div className="flex flex-row gap-6">
           <Image

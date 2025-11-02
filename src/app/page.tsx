@@ -29,7 +29,7 @@ export default async function CoinsPage() {
         لیست قیمت لحظه‌ای ارزهای دیجیتال 💰
       </h1>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto flex flex-col sm:flex-row">
         <table
           dir="rtl"
           className="min-w-full bg-white rounded-xl shadow-sm text-right"
@@ -44,7 +44,7 @@ export default async function CoinsPage() {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody >
             {coins.map((coin) => (
               <tr
                 key={coin.id}
