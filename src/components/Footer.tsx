@@ -3,13 +3,13 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="flex flex-col py-10 bg-blue-800 text-white ">
+    <div className="flex flex-col py-10 bg-blue-800 text-white w-full">
       <div className="flex flex-col justify-around items-center gap-3 bg-blue-800 text-white py-7
-      w-full md:flex-row">
+       md:flex-row ">
         <div className="w-60">
           <Image
             src="/image/logo_dark.8e5c7ade 2.png"
-            alt="لوگوی ری پیمنت"
+            alt=""
             width={200}
             height={80}
             className="object-contain"

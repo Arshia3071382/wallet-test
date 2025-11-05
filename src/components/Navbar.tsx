@@ -34,7 +34,7 @@ export default function Navbar() {
       </div>
 
      
-      <div className="hidden md:flex space-x-6 font-serif flex-row-reverse">
+      <div className="hidden md:flex space-x-6 font-serif flex-row">
         <Link href="/" className="text-gray-700 hover:text-blue-600">خانه</Link>
         <Link href="/about" className="text-gray-700 hover:text-blue-600">قیمت رمزارزها</Link>
         <Link href="/about" className="text-gray-700 hover:text-blue-600">مقالات</Link>

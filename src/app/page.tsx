@@ -9,7 +9,8 @@ type Coin = {
   currency_code: string;
   price: string;
   daily_change: string;
-  rial_price: string;
+  irt_price: string;
+  daily_change_percent : string ;
 };
 
 export default async function CoinsPage() {
@@ -58,15 +59,15 @@ export default async function CoinsPage() {
                 </td>
                 <td
                   className={`p-3 font-semibold ${
-                    parseFloat(coin.daily_change) > 0
+                    parseFloat(coin.daily_change_percent) > 0
                       ? "text-green-600"
                       : "text-red-500"
                   }`}
                 >
-                  {coin.daily_change}%
+                  {coin.daily_change_percent}%
                 </td>
                 <td className="p-3 text-gray-600">
-                  {parseFloat(coin.rial_price).toLocaleString()} تومان
+                  {parseFloat(coin.irt_price).toLocaleString()} تومان
                 </td>
                 <td className="p-3 text-left">
                   <Link
@@ -83,7 +84,6 @@ export default async function CoinsPage() {
       </div>
 
       <MainContent />
-      <Footer />
     </main>
   );
 }

@@ -1,22 +1,13 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // تنظیمات اصلی
-  reactStrictMode: false,
-  
-  // تنظیمات تصاویر
   images: {
-    domains: [], // برای تصاویر خارجی باید دامنه اضافه کنید
-    formats: ['image/webp', 'image/avif'],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "b.wallet.ir",
+      },
+    ],
   },
-  
-  // تنظیمات کامپایلر
-  compiler: {
-    // هیچ فریمورک CSS-in-JS فعال نیست
-  },
-  
-  // ویژگی‌های experimental غیرفعال
-  experimental: {},
-}
+};
 
-module.exports = nextConfig
+export default nextConfig;
