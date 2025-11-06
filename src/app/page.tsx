@@ -1,17 +1,8 @@
 import Footer from "@/components/Footer";
 import MainContent from "@/components/MainContent";
 import Link from "next/link";
+import { Coin } from "@/type/Coin";
 
-type Coin = {
-  id: number;
-  en_name: string;
-  fa_name: string;
-  currency_code: string;
-  price: string;
-  daily_change: string;
-  irt_price: string;
-  daily_change_percent : string ;
-};
 
 export default async function CoinsPage() {
 
