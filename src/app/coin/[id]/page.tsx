@@ -19,11 +19,11 @@ export default async function CoinPage({
   if (!res.ok) notFound();
 
   const data = await res.json();
-  const coin : Coin = data.items.find(
-    (c: { currency_code: string }) => c.currency_code === id
-  );
+ const coin = data.items.find(
+  (c: { currency_code: string }) => c.currency_code === id
+) as Coin | undefined;
 
-  if (!coin) notFound();
+if (!coin) notFound();
 
   return (
     <main dir="rtl" className="min-h-screen bg-gray-50 p-8">
