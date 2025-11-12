@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import CoinDet from "@/components/coinDet/CoinDet";
-import MainContent from "@/components/MainContent";
+
 import Questions from "@/components/coinDet/Questions";
 import Image from "next/image";
 import StartImg from "./../../../../public/image/StartSectionImg.png"
@@ -9,16 +9,18 @@ import { Coin } from "@/type/Coin";
 export default async function CoinPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params; 
+  const { id } = await params;
+
 
   const res = await fetch("https://b.wallet.ir/coinlist/list", {
     cache: "no-store",
   });
   if (!res.ok) notFound();
 
-  const data = await res.json();
+ const data: { items: Coin[] } = await res.json();
+
  const coin = data.items.find(
   (c: { currency_code: string }) => c.currency_code === id
 ) as Coin | undefined;
@@ -32,9 +34,10 @@ if (!coin) notFound();
       <Questions />
 
       <div className="w-full">
-        <div className="grid grid-cols-10 max-w-180 mx-auto mt-25">
+        <div className="grid grid-cols-10 w-180 mx-auto mt-24">
         <div className="col-span-4">
-          <Image className="" src={StartImg} alt="" />
+         <Image src={StartImg} alt="Start Section" width={500} height={400} />
+
         </div>
         <div className="col-span-6 flex flex-col justify-between items-center">
           <h2 className="font-extrabold text-2xl">علاقه مند به خرید 
