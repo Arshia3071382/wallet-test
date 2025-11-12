@@ -9,10 +9,9 @@ import { Coin } from "@/type/Coin";
 export default async function CoinPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = await params;
-
+  const { id } = params; 
 
   const res = await fetch("https://b.wallet.ir/coinlist/list", {
     cache: "no-store",
@@ -28,19 +27,18 @@ export default async function CoinPage({
 if (!coin) notFound();
 
   return (
-    <main dir="rtl" className="min-h-screen bg-gray-50 p-8">
+    <main dir="rtl" className="min-h-screen bg-gray-50 p-8 overflow-hidden">
       {/* پاس دادن داده به کامپوننت جزئیات */}
       <CoinDet coin={coin} />
       <Questions />
 
       <div className="w-full">
-        <div className="grid grid-cols-10 w-180 mx-auto mt-24">
-        <div className="col-span-4">
-         <Image src={StartImg} alt="Start Section" width={500} height={400} />
-
+        <div className="flex items-center gap-8 justify-center mx-auto mt-24">
+        <div >
+          <Image  src={StartImg} alt="" />
         </div>
-        <div className="col-span-6 flex flex-col justify-between items-center">
-          <h2 className="font-extrabold text-2xl">علاقه مند به خرید 
+        <div className=" flex flex-col gap-6  items-center">
+          <h2 className="font-extrabold  text-2xl">علاقه مند به خرید 
              <span> {coin.fa_name} </span>
             هستید ؟
           </h2>
