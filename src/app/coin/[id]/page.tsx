@@ -33,11 +33,11 @@ if (!coin) notFound();
       <Questions />
 
       <div className="w-full">
-        <div className="flex items-center gap-8 justify-center mx-auto mt-24">
+        <div className="flex flex-col md:flex-row items-center gap-8 justify-center mx-auto mt-24">
         <div >
           <Image  src={StartImg} alt="" />
         </div>
-        <div className=" flex flex-col gap-6  items-center">
+        <div className=" flex flex-col gap-6 text-center items-center">
           <h2 className="font-extrabold  text-2xl">علاقه مند به خرید 
              <span> {coin.fa_name} </span>
             هستید ؟
