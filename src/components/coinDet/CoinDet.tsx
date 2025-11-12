@@ -2,6 +2,8 @@ import Image from "next/image";
 import iran from "@/../public/image/images-removebg-preview.png";
 import arrow from "@/../public/image/arrow_drop_down_39dp_000000_FILL0_wght400_GRAD0_opsz40.png";
 import { Coin } from "@/type/Coin";
+import bitImg from "./../../../public/image/bit-img.jpg"
+import chart from "./../../../public/image/chart.png"
 
 export default function CoinDet({ coin }: { coin: Coin }) {
   return (
@@ -10,7 +12,7 @@ export default function CoinDet({ coin }: { coin: Coin }) {
 
         <div className="col-span-7">
           <div className="px-1.5 ">
-            <h1 className="mr-10 mb-10">قیمت لحظه‌ای</h1>
+            <h1 className="mr-10 mb-10 font-bold">قیمت لحظه‌ای</h1>
 
             <div className="flex justify-between items-center px-10">
               <div>
@@ -21,7 +23,7 @@ export default function CoinDet({ coin }: { coin: Coin }) {
                   height={40}
                   className="object-contain inline-block"
                 />
-                {coin.fa_name}
+                <p className="font-bold text-xl">{coin.fa_name}</p>
               </div>
               <div>
                 <p>{coin.price} تومان</p>
@@ -32,7 +34,13 @@ export default function CoinDet({ coin }: { coin: Coin }) {
             <div className="flex flex-col mt-15 px-10">
               <div className="flex justify-between items-center mb-5">
                 <h2>تغییرات قیمت امروز :</h2>
-                <p>{coin.daily_change_percent}</p>
+                <p className={`p-3 font-semibold ${
+                    parseFloat(coin.daily_change_percent) > 0
+                      ? "text-green-600"
+                      : "text-red-500"
+                  }`}>{coin.daily_change_percent}</p>
+                
+  
               </div>
               <div className="flex justify-between items-center mb-5">
                 <h2>خرید {coin.fa_name} :</h2>
@@ -44,7 +52,7 @@ export default function CoinDet({ coin }: { coin: Coin }) {
               </div>
               <div className="flex justify-between items-center mb-5">
                 <h2>بالاترین قیمت ۲۴ ساعت گذشته :</h2>
-                <p>{coin.daily_change_percent}</p>
+                <p>{coin.sell_irt_price}</p>
               </div>
             </div>
           </div>
@@ -104,6 +112,28 @@ export default function CoinDet({ coin }: { coin: Coin }) {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex flex-col justify-center items-center gap-10 mt-20">
+        <h1 className="font-extrabold text-3xl  text-center  sm:text-right px-10 pr-20">
+          درباره 
+      
+          <span className="text-blue-500"> {coin.fa_name}</span>
+          </h1>
+
+          <div className="flex flex-col 
+          justify-between items-center gap-20 lg:flex-row-reverse pr-10 ">
+            <Image className="rounded-2xl" width={500} height={300} src={bitImg} alt="bitCoin" />
+            <p className="w-150">{coin.about}</p>
+          </div>
+      </div>
+
+      <div className="flex flex-col justify-center items-center gap-4 pr-15">
+        <h1 className="font-extrabold text-3xl text-center mt-30 font-serif ">نمودار قیمت 
+          <span> {coin.fa_name} </span>
+           و نرخ برابری تومان
+        </h1>
+        <Image src={chart} alt="chart" />
       </div>
     </div>
   );
