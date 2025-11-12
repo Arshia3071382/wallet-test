@@ -9,9 +9,10 @@ import { Coin } from "@/type/Coin";
 export default async function CoinPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params; 
+  const { id } = await params;
+ 
 
   const res = await fetch("https://b.wallet.ir/coinlist/list", {
     cache: "no-store",
