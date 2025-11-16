@@ -4,11 +4,13 @@ import arrow from "@/../public/image/arrow_drop_down_39dp_000000_FILL0_wght400_G
 import { Coin } from "@/type/Coin";
 import bitImg from "./../../../public/image/bit-img.jpg"
 import chart from "./../../../public/image/chart.png"
+import Container from "../Container";
 
 export default function CoinDet({ coin }: { coin: Coin }) {
   return (
     <div>
-      <div className=" flex flex-col  md:grid grid-cols-15 shadow rounded-3xl py-10">
+      <Container>
+        <div className=" flex flex-col  md:grid grid-cols-15 shadow rounded-3xl py-10">
 
         <div className="col-span-7">
           <div className="px-1.5 ">
@@ -135,6 +137,7 @@ export default function CoinDet({ coin }: { coin: Coin }) {
         </h1>
         <Image src={chart} alt="chart" />
       </div>
+      </Container>
     </div>
   );
 }

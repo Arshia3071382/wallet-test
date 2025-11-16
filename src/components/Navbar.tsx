@@ -5,12 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import logo from "@/../public/image/logo_dark.8e5c7ade 2.png";
+import Container from "./Container";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white container mx-auto shadow-sm py-4 px-6 flex justify-between items-center flex-row ">
+   <Container>
+      <nav className="bg-white container mx-auto shadow-sm py-4 px-6 flex justify-between items-center flex-row ">
    
       <div className="flex items-center gap-6 flex-row"> 
         <div className="md:hidden">
@@ -34,8 +36,8 @@ export default function Navbar() {
       </div>
 
      
-      <div className="hidden md:flex space-x-6 font-serif flex-row">
-        <Link href="/" className="text-gray-700 hover:text-blue-600">خانه</Link>
+      <div className="hidden md:flex space-x-6  flex-row">
+        <Link href="/" className="text-gray-700 hover:text-blue-600">صفحه اصلی</Link>
         <Link href="/about" className="text-gray-700 hover:text-blue-600">قیمت رمزارزها</Link>
         <Link href="/about" className="text-gray-700 hover:text-blue-600">مقالات</Link>
         <Link href="/about" className="text-gray-700 hover:text-blue-600">تماس با ما</Link>
@@ -65,5 +67,6 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
+   </Container>
   );
 }

@@ -16,5 +16,15 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: iranSans-r;
+}
+
+
+@font-face {
+  font-family: iranBold;
+  src: url('./../../public/font/IRANSansXFaNum-Bold.ttf');
+  font-weight: 900;
+}@font-face {
+  font-family: iranSans-r; 
+  src: url("./../../public/font/IRANSansXFaNum-Regular.ttf"); 
 }
