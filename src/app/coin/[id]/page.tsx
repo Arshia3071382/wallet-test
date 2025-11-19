@@ -29,7 +29,7 @@ if (!coin) notFound();
 
   return (
     <main dir="rtl" className="min-h-screen bg-gray-50 p-8 overflow-hidden">
-      {/* پاس دادن داده به کامپوننت جزئیات */}
+    
       <CoinDet coin={coin} />
       <Questions />
 

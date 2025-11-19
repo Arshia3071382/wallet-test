@@ -57,7 +57,7 @@ export default function Navbar() {
 
  
       <div className="flex items-center gap-4">
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden  items-center gap-2  lg:flex">
           <Image src="/image/Frame (1).svg" alt="menu" width={30} height={40} />
           <h5 className="mt-1">021-91008590</h5>
         </div>
