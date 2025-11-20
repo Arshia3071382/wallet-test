@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Coin } from "@/type/Coin";
 import Container from "@/components/Container";
 import Button from "./../../src/components/Button";
-import Search from "./../../public/image/search_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+import Search from "./../../public/image/search_16dp_000000_FILL0_wght400_GRAD0_opsz20.png";
 import Image from "next/image";
 
 export default async function CoinsPage() {
@@ -25,86 +25,99 @@ export default async function CoinsPage() {
         <h1 className="text-2xl font-extrabold text-center mb-6 font-iranBold">
           لیست قیمت لحظه‌ای ارزهای دیجیتال
         </h1>
-        <div className="flex justify-between mb-5">
+        <div className="flex  mb-5">
           <Button />
         </div>
 
         <div className="w-full">
           {/*  Desktop Table  */}
-          <div className="overflow-x-auto rounded hidden md:block">
-            <table
-              dir="rtl"
-              className="min-w-full bg-white rounded-2xl shadow-sm text-right"
-            >
-              <thead className="bg-gray-300 text-gray-700 text-sm">
-                <tr>
-                  <th className="p-3">نام رمزارز</th>
-                  <th className="p-3">ارزش دلاری</th>
-                  <th className="p-3">تغییر روزانه</th>
-                  <th className="p-3">خرید از والت</th>
-                  <th className="p-3">فروش به والت</th>
-                  <th className="p-3">
-                    <div>
-                      <div className="flex bg-white gap-1 py-4 rounded pr-3">
-                        
-                        <Image src={Search} alt="search" />
-                        <input type="text" placeholder="جستوجو..." />
-                      </div>
-                    </div>
-                  </th>
-                </tr>
-              </thead>
+          <div className="overflow-x-auto rounded hidden md:flex ">
+          <table
+  dir="rtl"
+  className="min-w-full bg-white rounded-2xl shadow-sm text-right"
+>
+  <thead className="bg-gray-300 text-gray-700 text-sm w-full hidden md:table-header-group">
+    <tr className="grid grid-cols-6 gap-2 w-full p-2">
+      <th className="p-2 text-center text-xs md:text-sm">نام رمزارز</th>
+      <th className="p-2 text-center text-xs md:text-sm">ارزش دلاری</th>
+      <th className="p-2 text-center text-xs md:text-sm">تغییر روزانه</th>
+      <th className="p-2 text-center text-xs md:text-sm">خرید از والت</th>
+      <th className="p-2 text-center text-xs md:text-sm">فروش به والت</th>
+      <th className="p-2 text-center text-xs md:text-sm">
+        <div className="flex bg-white gap-1 rounded px-1 py-1 items-center max-w-[150px] mx-auto">
+          <Image src={Search} alt="search" width={12} height={12} />
+          <input
+            type="text"
+            placeholder="جستوجو..."
+            className="w-full outline-none text-xs"
+          />
+        </div>
+      </th>
+    </tr>
+  </thead>
 
-              <tbody>
-                {coins.map((coin, index) => (
-                  <tr
-                    key={coin.id}
-                    className={`
-              ${index % 2 === 0 ? "bg-white" : "bg-gray-100"}
-              hover:bg-gray-100 transition-all
-            `}
-                  >
-                    <td className="p-3 font-medium text-gray-800">
-                      <div className="flex flex-row-reverse justify-end gap-2">
-                        {coin.fa_name}
-                        <img src={coin.icon} width={25} height={25} alt="" />
-                      </div>
-                    </td>
+  <tbody>
+    {coins.map((coin, index) => (
+      <tr
+        key={coin.id}
+        className={`
+          grid grid-cols-6 gap-2 p-2 items-center
+          ${index % 2 === 0 ? "bg-white" : "bg-gray-100"}
+          hover:bg-gray-100 transition-all
+          border-b border-gray-200 last:border-b-0
+        `}
+      >
+        <td className="p-1 font-medium text-gray-800 text-xs  md:text-sm">
+          <div className="flex flex-row-reverse justify-end items-center gap-2">
+            <span className="text-right">
+              {coin.fa_name}</span>
+            <img
+              src={coin.icon}
+              width={20}
+              height={20}
+              className="object-contain"
+            />
+          </div>
+        </td>
 
-                    <td className="p-3 text-gray-600">
-                      ${parseFloat(coin.price).toLocaleString()}
-                    </td>
+        <td className="p-1 text-gray-600 text-xs md:text-sm text-center">
+          ${parseFloat(coin.price).toLocaleString()}
+        </td>
 
-                    <td
-                      className={`p-3 font-semibold ${
-                        parseFloat(coin.daily_change_percent) > 0
-                          ? "text-green-600"
-                          : "text-red-500"
-                      }`}
-                    >
-                      {coin.daily_change_percent}%
-                    </td>
+        <td
+          className={`p-1 font-semibold text-xs md:text-sm text-center ${
+            parseFloat(coin.daily_change_percent) > 0
+              ? "text-green-600"
+              : "text-red-500"
+          }`}
+        >
+          {coin.daily_change_percent}%
+        </td>
 
-                    <td className="p-3 text-gray-600">
-                      {parseFloat(coin.buy_irt_price).toLocaleString()} تومان
-                    </td>
+        <td className="p-1 text-gray-600 text-xs md:text-sm text-center">
+          {parseFloat(coin.buy_irt_price).toLocaleString()}
+        </td>
 
-                    <td className="p-3">
-                      {parseFloat(coin.sell_irt_price).toLocaleString()} تومان
-                    </td>
+        <td className="p-1 text-gray-600 text-xs md:text-sm text-center">
+          {parseFloat(coin.sell_irt_price).toLocaleString()}تومان
+        </td>
 
-                    <td className="p-3 text-left">
-                      <Link
-                        href={`/coin/${coin.currency_code}`}
-                        className="inline-block bg-blue-600 text-white py-1.5 px-4 rounded-lg hover:bg-blue-700 text-sm"
-                      >
-                        معامله
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <td className="p-1">
+          <div className="mr-10 lg:mr-15">
+            <Link
+            href={`/coin/${coin.currency_code}`}
+            className="inline-block bg-blue-600 text-white py-1 px-3 rounded-lg hover:bg-blue-700 text-xs md:text-sm whitespace-nowrap "
+          >
+            معامله
+          </Link>
+          </div>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+
           </div>
 
           {/*  Mobile Accordion  */}

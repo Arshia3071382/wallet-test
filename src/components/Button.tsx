@@ -26,11 +26,16 @@ function Button() {
     <div className="relative  w-full">
 
      
-      <div className="hidden md:flex justify-between gap-2">
-        {items.map((item) => (
-          <button className="bg-gray-100 px-2 rounded py-2 hover:bg-sky-500 hover:text-white" key={item}>{item}</button>
-        ))}
-      </div>
+      <div className="hidden md:flex justify-between gap-1 lg:gap-2 xl:gap-4 w-full">
+  {items.map((item) => (
+    <button 
+      className="bg-gray-100 rounded py-2 hover:bg-sky-500 hover:text-white transition-all text-xs lg:text-sm xl:text-base px-2 lg:px-3 xl:px-6 flex-1 text-center whitespace-nowrap truncate min-w-0" 
+      key={item}
+    >
+      {item}
+    </button>
+  ))}
+</div>
 
      
       <button
