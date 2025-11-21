@@ -6,7 +6,7 @@ export default function Footer() {
     <div className="flex flex-col py-10 bg-blue-800 text-white w-full">
       <div className="flex flex-col justify-around items-center gap-3 bg-blue-800 text-white py-7
        md:flex-row ">
-        <div className="w-60">
+        <div className="w-60 flex-col relative -right-22 md:right-2 lg:right-10 sm:justify-center">
           <Image
             src="/image/logo_dark.8e5c7ade 2.png"
             alt=""
@@ -14,19 +14,20 @@ export default function Footer() {
             height={80}
             className="object-contain"
           />
-          <p className="text-sm mt-4 leading-6 ">
+          
+          <p className="text-sm mt-4 leading-6 w-100 md:w-50">
             راهکارهای پرداخت ری در سال 2009 فعالیت خود را در زمینه سیستم های
             پرداخت بین المللی با وبسایت wallet.ir آغاز کرد. ری پرداخت با نام
             تجاری MGY INVESTMENT LTD با شماره ثبت ۷۳۶۵۰۶۳ در کشور انگلستان به
             ثبت رسید و فعالیت رسمی آغاز نمود.
           </p>
         </div>
-
+        <div className=" w-full h-px bg-gray-500 mt-5 sm:hidden"></div>
        <div className="flex flex-row  justify-between gap-10 mt-10">
          <div>
           <ul className="flex flex-col gap-3">
             <div className="pb-4 font-bold">
-              <li>لینک های مرتبط</li>
+              <li className="font-bold">لینک های مرتبط</li>
             </div>
             <li>
               <Link href="/">صفحه اصلی</Link>
@@ -44,7 +45,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 mt-13">
             <li>
               <Link href="/faq">سوالات متداول</Link>
             </li>
@@ -63,7 +64,7 @@ export default function Footer() {
         <div>
           <ul className="flex flex-col gap-3">
             <div className="pb-4 font-bold">
-              <li>تبادل ارز</li>
+              <li className="font-bold">تبادل ارز</li>
             </div>
             <li>خرید بیت کوین</li>
             <li>خرید اتریوم</li>
@@ -85,9 +86,10 @@ export default function Footer() {
 
       <div className="w-full h-px bg-gray-500"></div>
 
-      <div className="flex flex-col gap-3 sm:flex-row justify-around items-center py-10 text-white">
-        <h3>تمامی حقوق این سرویس متعلق به مجموعه ری پیمنت است</h3>
-        <div className="flex flex-row gap-6">
+      <div className="flex gap-3 flex-col-reverse sm:flex-row justify-around items-center py-10 text-white">
+        <h3 className="mt-5">تمامی حقوق این سرویس متعلق به مجموعه ری پیمنت است</h3>
+        <div className=" w-full h-px bg-gray-500 mt-5 sm:hidden"></div>
+        <div className="flex flex-row gap-6 ">
           <Image
             src="/image/social-icon/Frame-1.svg"
             alt="social 1"
