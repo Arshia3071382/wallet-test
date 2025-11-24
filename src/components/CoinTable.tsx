@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Coin } from "@/type/Coin";
 import Search from "@/../public/image/search_16dp_000000_FILL0_wght400_GRAD0_opsz20.png";
+import Pagination from "./Pagination";
 
 interface CoinTableProps {
   coins: Coin[];
@@ -17,33 +18,8 @@ export default function CoinTable({
   totalPages,
 }: CoinTableProps) {
 
-
-  const getPageNumbers = () => {
-    const pages = [];
-    const maxVisiblePages = 5;
-    
-    let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-    
-
-    if (endPage - startPage + 1 < maxVisiblePages) {
-      startPage = Math.max(1, endPage - maxVisiblePages + 1);
-    }
-    
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
-    }
-    
-    return pages;
-  };
-
-  const pageNumbers = getPageNumbers();
-
   return (
     <div className="w-full">
-
-      
-   
 
       {/*Desktop Table*/}
       <div className="overflow-x-auto rounded hidden md:block">
@@ -189,112 +165,9 @@ export default function CoinTable({
         ))}
       </div>
 
-      {/*  Pagination  */}
+      {/*  Pagination Component */}
       {totalPages > 1 && (
-        <div className="flex flex-col items-center gap-4 mt-8">
-          
-        
-          <div className="hidden md:flex justify-center items-center gap-2">
-           
-            <Link
-              href={`?page=${Math.max(1, page - 1)}`}
-              className={`px-4 py-2 rounded-lg border transition-colors flex items-center gap-1 ${
-                page <= 1
-                  ? "bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed"
-                  : "bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400"
-              }`}
-            >
-              ← قبلی
-            </Link>
-
-           
-            {page > 3 && (
-              <>
-                <Link
-                  href="?page=1"
-                  className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-100 transition-colors"
-                >
-                  1
-                </Link>
-                <span className="px-2 text-gray-400">...</span>
-              </>
-            )}
-
-          
-            {pageNumbers.map((pageNum) => (
-              <Link
-                key={pageNum}
-                href={`?page=${pageNum}`}
-                className={`px-4 py-2 rounded-lg border transition-colors font-medium ${
-                  pageNum === page 
-                    ? "bg-blue-600 text-white border-blue-600 shadow-sm" 
-                    : "bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400"
-                }`}
-              >
-                {pageNum}
-              </Link>
-            ))}
-
-            {page < totalPages - 2 && (
-              <>
-                <span className="px-2 text-gray-400">...</span>
-                <Link
-                  href={`?page=${totalPages}`}
-                  className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-100 transition-colors"
-                >
-                  {totalPages}
-                </Link>
-              </>
-            )}
-
-           
-            <Link
-              href={`?page=${Math.min(totalPages, page + 1)}`}
-              className={`px-4 py-2 rounded-lg border transition-colors flex items-center gap-1 ${
-                page >= totalPages
-                  ? "bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed"
-                  : "bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400"
-              }`}
-            >
-              بعدی →
-            </Link>
-          </div>
-
-          {/* Mobile Pagination */}
-          <div className="md:hidden flex justify-between items-center w-full gap-2">
-            <Link
-              href={`?page=${Math.max(1, page - 1)}`}
-              className={`flex-1 text-center py-3 rounded-lg border transition-colors ${
-                page <= 1
-                  ? "bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed"
-                  : "bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400"
-              }`}
-            >
-              ← قبلی
-            </Link>
-
-            <div className="flex-1 text-center py-3 bg-blue-600 text-white rounded-lg font-medium shadow-sm">
-              صفحه {page}<br/>
-              <span className="text-xs font-normal opacity-90">از {totalPages}</span>
-            </div>
-
-            <Link
-              href={`?page=${Math.min(totalPages, page + 1)}`}
-              className={`flex-1 text-center py-3 rounded-lg border transition-colors ${
-                page >= totalPages
-                  ? "bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed"
-                  : "bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400"
-              }`}
-            >
-              بعدی →
-            </Link>
-          </div>
-
-         
-          <div className="text-xs text-gray-500 text-center">
-            ارزهای {((page - 1) * 5) + 1} تا {((page - 1) * 5) + coins.length} از {totalPages * 5}
-          </div>
-        </div>
+        <Pagination page={page} totalPages={totalPages} />
       )}
 
       
