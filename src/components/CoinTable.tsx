@@ -6,7 +6,7 @@ import { Coin } from "@/type/Coin";
 import Search from "@/../public/image/search_16dp_000000_FILL0_wght400_GRAD0_opsz20.png";
 import Pagination from "./Pagination"; 
 
-interface CoinTableProps {
+export interface CoinTableProps {
   coins: Coin[];
   page: number;
   totalPages: number;

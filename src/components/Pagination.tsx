@@ -45,7 +45,7 @@ export default function Pagination({ page, totalPages }: PaginationProps) {
           </>
         )}
 
-        {/* اعداد صفحات */}
+       
         {pageNumbers.map((pageNum) => (
           <Link
             key={pageNum}
