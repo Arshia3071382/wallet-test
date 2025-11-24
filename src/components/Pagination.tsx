@@ -13,7 +13,7 @@ export default function Pagination({ page, totalPages }: PaginationProps) {
     const maxVisiblePages = 5;
     
     let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
     if (endPage - startPage + 1 < maxVisiblePages) {
       startPage = Math.max(1, endPage - maxVisiblePages + 1);
@@ -30,9 +30,9 @@ export default function Pagination({ page, totalPages }: PaginationProps) {
 
   return (
     <div className="flex flex-col items-center gap-4 mt-8">
-    
+     
       <div className="hidden md:flex justify-center items-center gap-2">
-        
+    
         {page > 3 && (
           <>
             <Link
@@ -45,7 +45,7 @@ export default function Pagination({ page, totalPages }: PaginationProps) {
           </>
         )}
 
-        
+        {/* اعداد صفحات */}
         {pageNumbers.map((pageNum) => (
           <Link
             key={pageNum}
@@ -60,7 +60,7 @@ export default function Pagination({ page, totalPages }: PaginationProps) {
           </Link>
         ))}
 
-        {/* نمایش ... در صورت نیاز */}
+      
         {page < totalPages - 2 && (
           <>
             <span className="px-2 text-gray-400">...</span>
@@ -74,7 +74,7 @@ export default function Pagination({ page, totalPages }: PaginationProps) {
         )}
       </div>
 
-      {/* Mobile Pagination - فقط اعداد */}
+      
       <div className="md:hidden flex justify-center items-center gap-2 w-full">
         {pageNumbers.map((pageNum) => (
           <Link
@@ -91,8 +91,8 @@ export default function Pagination({ page, totalPages }: PaginationProps) {
         ))}
       </div>
 
-      
-      
+     
+     
     </div>
   );
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Coin } from "@/type/Coin";
 import Search from "@/../public/image/search_16dp_000000_FILL0_wght400_GRAD0_opsz20.png";
-import Pagination from "./Pagination";
+import Pagination from "./Pagination"; 
 
 interface CoinTableProps {
   coins: Coin[];
@@ -165,9 +165,9 @@ export default function CoinTable({
         ))}
       </div>
 
-      {/*  Pagination Component */}
+    
       {totalPages > 1 && (
-        <Pagination page={page} totalPages={totalPages} />
+        <Pagination page={page} totalPages={totalPages} /> // اصلاح تایپو
       )}
 
       
