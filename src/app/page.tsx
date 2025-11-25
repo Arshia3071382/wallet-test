@@ -5,6 +5,8 @@ import Container from "@/components/Container";
 import Button from "./../../src/components/Button";
 import CoinTable from "@/components/CoinTable";
 
+
+
 async function getCoinsPage(page: number = 1): Promise<{
   coins: Coin[];
   totalPages: number;
@@ -37,9 +39,9 @@ async function getCoinsPage(page: number = 1): Promise<{
 export default async function CoinsPage({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] };
+  searchParams?: Promise<{page :string }>;
 }) {
-  const currentPage = parseInt((searchParams?.page as string) || "1");
+  const currentPage = parseInt(((await searchParams)?.page as string) || "1");
   const { coins, totalPages } = await getCoinsPage(currentPage);
 
   return (
