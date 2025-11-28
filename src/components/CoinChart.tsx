@@ -1,4 +1,3 @@
-// components/AdvancedCoinChart.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -11,9 +10,11 @@ import {
   ResponsiveContainer,
   CartesianGrid,
   Area,
-  ComposedChart
+  ComposedChart,
+  TooltipProps
 } from "recharts";
 
+// انواع داده‌ها رو تعریف می‌کنیم
 interface ChartData {
   time: string;
   price: number;
@@ -21,6 +22,17 @@ interface ChartData {
 }
 
 type Timeframe = "24h" | "7d" | "1m" | "3m" | "1y";
+
+// نوع برای Tooltip
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    value: number;
+    dataKey: string;
+    payload: ChartData;
+  }>;
+  label?: string;
+}
 
 export default function AdvancedCoinChart({ coinCode }: { coinCode: string }) {
   const [chartData, setChartData] = useState<ChartData[]>([]);
@@ -146,13 +158,12 @@ export default function AdvancedCoinChart({ coinCode }: { coinCode: string }) {
       data.push({
         time: timeLabel,
         price: Number(currentPrice.toFixed(2)),
-        volume: Math.random() * 1000000 + 500000 // حجم معاملات تصادفی
+        volume: Math.random() * 1000000 + 500000 
       });
     }
 
     return data;
   }
-
 
   function generateFallbackData(timeframe: Timeframe): ChartData[] {
     const sampleData = [
@@ -168,7 +179,8 @@ export default function AdvancedCoinChart({ coinCode }: { coinCode: string }) {
     return sampleData;
   }
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  // درست شده - بدون any
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
@@ -273,7 +285,7 @@ export default function AdvancedCoinChart({ coinCode }: { coinCode: string }) {
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 12, fill: '#6b7280' }}
-              tickFormatter={(value) => {
+              tickFormatter={(value: number) => {
                 if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
                 if (value >= 1000) return `${(value / 1000).toFixed(0)}K`;
                 return value.toFixed(0);

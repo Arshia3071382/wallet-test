@@ -173,7 +173,7 @@ export default function CoinTable({
       
       {coins.length === 0 && (
         <div className="text-center py-12 text-gray-500 bg-gray-50 rounded-lg border border-gray-200">
-          <div className="text-lg mb-2">🚫</div>
+          
           <div className="font-medium">هیچ ارزی در این صفحه یافت نشد</div>
           <div className="text-sm mt-1">لطفاً صفحه دیگری را امتحان کنید</div>
         </div>
