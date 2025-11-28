@@ -102,9 +102,9 @@ export default function CoinTable({
       {/*  Mobile View */}
       <div className="md:hidden flex flex-col gap-4 mt-5">
     
-        <div className="flex bg-gray-300 gap-1 rounded-lg px-3 py-7 items-center border justify-between border-gray-300 shadow-sm">
-          <h2 className="mr-3">نام ارز</h2>
-          <h2 className="mr-20">ارزش دلاری</h2>
+        <div className="flex bg-gray-300  rounded-lg px-3 py-7 items-center border justify-between border-gray-300 shadow-sm">
+          <h2 >نام ارز</h2>
+          <h2 className="mr-10 ">ارزش دلاری</h2>
           <h2>تغییر روزانه</h2>
           
         </div>
@@ -130,8 +130,8 @@ export default function CoinTable({
                 </div>
               </div>
 
-              <div className="flex flex-row justify-between gap-35 items-end">
-                <span className="text-gray-700 font-medium text-sm">
+            
+                <span className="text-gray-700 font-medium pl-15 text-sm sm:pl-10">
                   ${parseFloat(coin.price).toLocaleString()}
                 </span>
                 <span className={`text-xs font-semibold ${
@@ -141,7 +141,7 @@ export default function CoinTable({
                 }`}>
                   {coin.daily_change_percent}%
                 </span>
-              </div>
+             
             </div>
 
             <div className="flex flex-col gap-2 mt-2 text-gray-600 border-t pt-3">
@@ -167,7 +167,7 @@ export default function CoinTable({
 
     
       {totalPages > 1 && (
-        <Pagination page={page} totalPages={totalPages} /> // اصلاح تایپو
+        <Pagination page={page} totalPages={totalPages} /> 
       )}
 
       
